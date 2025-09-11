@@ -2,36 +2,41 @@ import pandas as pd
 import numpy as np
 import os
 
-def Load_data(nama):
-    df = []
-    for i in nama:
-        df_list = pd.read_excel(i, header=0, skiprows=1)  # Baca file Excel
-        year = i.split("-")[1]   # setelah '-' pertama
-        df_list["Tahun"] = year
-        df.append(df_list)
+def Load_data(files):
+    df_all = []
 
-    df = pd.concat(df, ignore_index=True)
-    # print(df)
-    # Ubah data menjadi format long
+    for f in files:
+        # baca langsung dari file upload
+        df_list = pd.read_excel(f, header=0, skiprows=1)
+
+        # ambil nama file untuk tahun
+        year = f.name.split("-")[1]
+        df_list["Tahun"] = year
+
+        df_all.append(df_list)
+
+    # gabungkan semua file
+    df = pd.concat(df_all, ignore_index=True)
+
+    # ubah format long
     df_long = df.melt(
         id_vars=["Elemen Data", "Tahun"],
         var_name="Bulan",
         value_name="Nilai"
     )
 
-    # Urutkan bulan secara khusus
-    bulan_order = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
+    # urutkan bulan
+    bulan_order = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", 
+                   "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
 
-    df_long["Bulan"] = pd.Categorical(
-        df_long["Bulan"], 
-        categories=bulan_order, 
-        ordered=True
-    )
+    df_long["Bulan"] = pd.Categorical(df_long["Bulan"], 
+                                      categories=bulan_order, 
+                                      ordered=True)
 
-    # Buat pivot table
+    # buat pivot table
     df_pivot = df_long.pivot_table(
-        index=(["Bulan", "Tahun"]), 
-        columns="Elemen Data", 
+        index=["Bulan", "Tahun"],
+        columns="Elemen Data",
         values="Nilai"
     ).reset_index()
 
