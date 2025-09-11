@@ -65,7 +65,7 @@ if len(pilih_elemen) == 1:
                 x="Tanggal",
                 y="Nilai",
                 color="Jenis", 
-                color_discrete_map={"Aktual":"red", "Forecast":"blue"},  
+                color_discrete_map={"Aktual":"blue", "Forecast":"red"},  
                 barmode="group",
                 title=f"Data Aktual vs Forecast ARIMA - {pilih_elemen[0]}"
             )
@@ -76,6 +76,7 @@ if len(pilih_elemen) == 1:
                 x="Tanggal",
                 y="Nilai",
                 color="Jenis",
+                color_discrete_map={"Aktual":"blue", "Forecast":"red"},
                 markers=True,
                 title=f"Data Aktual vs Forecast ARIMA - {pilih_elemen[0]}"
             )
@@ -137,3 +138,4 @@ else:
         title={'x': 0.5, 'xanchor': 'center'}
     )
     st.plotly_chart(fig, use_container_width=True)
+
