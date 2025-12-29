@@ -1,5 +1,5 @@
 import streamlit as st
-from Proses import Preprocessing, forecasting, cek_stationeritas
+from forecasting import Preprocessing, forecasting, cek_stationeritas
 from filter import filter_periode
 from streamlit_cookies_manager import EncryptedCookieManager
 
@@ -74,3 +74,4 @@ try:
     df = forecasting(df, pilih_elemen, pdq, best_aic, best_model, pilih_periode, pilih_grafik)
 except:
     st.stop()
+
