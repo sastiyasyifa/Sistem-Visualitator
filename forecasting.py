@@ -41,7 +41,7 @@ def Preprocessing(uploaded_files):
 
     return df
 
-def forecasting (df, elements, pdq, best_aic, best_model, pilih_periode="Bulan", pilih_grafik="Bar"):
+def forecast (df, elements, pdq, best_aic, best_model, pilih_periode="Bulan", pilih_grafik="Bar"):
     month_map = {
         "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "Mei": 5, "Jun": 6,
         "Jul": 7, "Agu": 8, "Sep": 9, "Okt": 10, "Nov": 11, "Des": 12
@@ -535,3 +535,4 @@ def Visualisasi(pilih_grafik, x_axis, pilih_elemen, df_final):
         )
         st.plotly_chart(fig, width='stretch')
         st.stop()
+
