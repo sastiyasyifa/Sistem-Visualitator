@@ -3,8 +3,5 @@ numpy
 plotly
 streamlit
 statsmodels
-joblib
-openpyxl
-matplotlib
-statsmodels
 itertools
+
