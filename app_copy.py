@@ -70,9 +70,10 @@ pilih_grafik = st.selectbox(
 )
 
 try:
-    df = forecasting(df, pilih_elemen, pdq, best_aic, best_model, pilih_periode, pilih_grafik)
+    df = forecast(df, pilih_elemen, pdq, best_aic, best_model, pilih_periode, pilih_grafik)
 except:
     st.stop()
+
 
 
 
