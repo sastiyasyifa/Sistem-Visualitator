@@ -4,4 +4,3 @@ plotly
 streamlit
 statsmodels
 itertools
-
