@@ -3,4 +3,3 @@ numpy
 plotly
 streamlit
 statsmodels
-itertools
