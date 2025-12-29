@@ -6,3 +6,5 @@ statsmodels
 joblib
 openpyxl
 matplotlib
+statsmodels
+itertools
