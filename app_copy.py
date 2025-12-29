@@ -1,6 +1,6 @@
 import streamlit as st
-from forecasting import Preprocessing, forecasting, cek_stationeritas
-from Gabungkan_Data import filter_periode
+from forecasting import Preprocessing, forecast, cek_stationeritas
+from Gabungkan_data import filter_periode
 
 hide_sidebar_style = """
     <style>
@@ -73,5 +73,6 @@ try:
     df = forecasting(df, pilih_elemen, pdq, best_aic, best_model, pilih_periode, pilih_grafik)
 except:
     st.stop()
+
 
 
